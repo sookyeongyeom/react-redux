@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import Counter from '../components/Counter';
 import { increase, decrease } from '../modules/counter';
+import { bindActionCreators } from 'redux';
 
 const CounterContainer = ({ number, increase, decrease }) => {
 	return <Counter number={number} onIncrease={increase} onDecrease={decrease} />;
@@ -26,8 +27,9 @@ const CounterContainer = ({ number, increase, decrease }) => {
 // 컴포넌트를 전달해주면 리덕스와 연동된 컴포넌트가 만들어짐
 export default connect(
 	(state) => ({ number: state.counter.number }),
-	(dispatch) => ({
-		increase: () => dispatch(increase()),
-		decrease: () => dispatch(decrease()),
-	}),
+	// (dispatch) => ({
+	// 	increase: () => dispatch(increase()),
+	// 	decrease: () => dispatch(decrease()),
+	// }),
+	(dispatch) => bindActionCreators({ increase, decrease }, dispatch),
 )(CounterContainer);
