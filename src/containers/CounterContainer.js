@@ -31,5 +31,11 @@ export default connect(
 	// 	increase: () => dispatch(increase()),
 	// 	decrease: () => dispatch(decrease()),
 	// }),
-	(dispatch) => bindActionCreators({ increase, decrease }, dispatch),
+	// (dispatch) => bindActionCreators({ increase, decrease }, dispatch),
+	// 아예 액션 생성 함수를 담은 객체 형태를 두번째 파라미터로 넣어주면
+	// connect 함수가 내부적으로 bindActionCreators 작업을 대신함
+	{
+		increase,
+		decrease,
+	},
 )(CounterContainer);
