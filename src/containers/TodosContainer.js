@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Todos from '../components/Todos';
 import { changeInput, insert, toggle, remove } from '../modules/todos';
-import { useCallback } from 'react';
+import { useCallback, React } from 'react';
 import useActions from '../hooks/useActions';
 
 const TodosContainer = () => {
@@ -32,7 +32,7 @@ const TodosContainer = () => {
 	);
 };
 
-export default TodosContainer;
+export default React.memo(TodosContainer);
 
 // export default connect(
 // 	({ todos }) => ({
